@@ -11,6 +11,7 @@
 template<typename T>
 class DMatrix {
 public:
+
     DMatrix(int rows, int cols){
         this->rows = rows;
         this->cols = cols;
@@ -32,12 +33,13 @@ public:
     DMatrix<T> operator*(const DMatrix<T> &other) const {
 
         DMatrix<T> result=DMatrix<T>(rows, other.cols);
-        for(int row_left=0;row_left<rows;row_left++) {
-            for(int col_right=0;col_right<cols;col_right++) {
-                result.matrix[row_left][col_right] = 0;
-                for(int col_left=0;col_left<cols;col_left++) {
-                    result.matrix[row_left][col_right] += matrix[row_left][col_left] * other.matrix[col_left][col_right];
+        for(int i = 0; i < rows; i++){
+            for(int j = 0; j < other.cols; j++){
+                T sum = 0;
+                for(int k = 0; k < cols; k++){
+                    sum += this->matrix[i][k] * other.matrix[k][j];
                 }
+                result.matrix[i][j] = sum;
             }
         }
         return result;
@@ -50,6 +52,19 @@ public:
             for(int i = 0; i < this->rows; i++){
                 for(int j = 0; j < this->cols; j++){
                     result.matrix[i][j] = this->matrix[i][j] + other.matrix[i][j];
+                }
+            }
+        }
+        return result;
+    }
+
+    DMatrix<T> operator-(const DMatrix<T> &other) const {
+        DMatrix<T> result = DMatrix<T>(this->rows, this->cols);
+        if(this->rows == other.rows && this->cols == other.cols){
+            result = DMatrix<T>(this->rows, this->cols);
+            for(int i = 0; i < this->rows; i++){
+                for(int j = 0; j < this->cols; j++){
+                    result.matrix[i][j] = this->matrix[i][j] - other.matrix[i][j];
                 }
             }
         }
@@ -89,7 +104,6 @@ public:
 
 
 
-
     DMatrix<T> inverse(int order) const {
         DMatrix<T> result=DMatrix<T>(order, order);
 
@@ -112,4 +126,12 @@ public:
 
 private:
 };
+template <typename T>
+static DMatrix<T> identity(int n){
+    DMatrix<T> I(n,n);
+    for(int i=0;i<n;i++)
+        I.matrix[i][i]=1;
+    return I;
+}
+
 #endif //KALMANFILTER_DMATRIX_H

@@ -22,22 +22,9 @@ public:
     DMatrix<float> KalmanGainMatrix = DMatrix<float>(6, 2);
     DMatrix<float> observationMatrix = DMatrix<float>(2, 6);
     DMatrix<float> MeasurementUncertainty = DMatrix<float>(2, 2);
-
-    //Matrix<float> *StateTransitionMatrix=new Matrix<float>(2,2);
-   Matrix<float, 6, 6> F_StateTransitionMatrix;
-   Matrix<float, 6, 6> P_EstimateUncertaintyMatrix_currentState;
-    Matrix<float, 6, 6> P_EstimateUncertaintyMatrix_nextState;
-    Matrix<float, 6, 6> Q_ProcessNoiseMatrix;
-    Matrix<float, 2, 6> H_observationMatrix;
-    Matrix<float, 2, 1> z_measurement;
-    Matrix<float, 6, 2> K_KalmanGain;
-
-    //Matrix<float> *ControlMatrix;
-   //Matrix<float> *ObservationMatrix;
-   //Matrix<float> *MeasurementCovarianceMatrix;
-   //Matrix<float> *currentStateMatrix;
-
-   float KalmanGain;
+    DMatrix<float> CurrentState = DMatrix<float>(6, 1);
+    DMatrix<float> PredictedState = DMatrix<float>(6, 1);
+    DMatrix<float> Measurement = DMatrix<float>(2, 1);
 
 private:
 };
