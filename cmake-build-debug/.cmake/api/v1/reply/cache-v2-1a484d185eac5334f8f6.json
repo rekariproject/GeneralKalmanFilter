@@ -55,7 +55,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/home/felix/CLionProjects/KalmanFilter/cmake-build-debug"
+			"value" : "/home/felix/Dokumente/GitHub/GeneralKalmanFilter/cmake-build-debug"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -591,7 +591,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/home/felix/CLionProjects/KalmanFilter"
+			"value" : "/home/felix/Dokumente/GitHub/GeneralKalmanFilter"
 		},
 		{
 			"name" : "CMAKE_INSTALL_PREFIX",
@@ -1123,7 +1123,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/felix/CLionProjects/KalmanFilter/cmake-build-debug"
+			"value" : "/home/felix/Dokumente/GitHub/GeneralKalmanFilter/cmake-build-debug"
 		},
 		{
 			"name" : "KalmanFilter_IS_TOP_LEVEL",
@@ -1147,7 +1147,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/felix/CLionProjects/KalmanFilter"
+			"value" : "/home/felix/Dokumente/GitHub/GeneralKalmanFilter"
 		}
 	],
 	"kind" : "cache",

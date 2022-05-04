@@ -36,6 +36,9 @@
 			[
 				{
 					"fragment" : "-g"
+				},
+				{
+					"fragment" : "-std=gnu++20"
 				}
 			],
 			"language" : "CXX",
@@ -45,7 +48,7 @@
 				[
 					1
 				],
-				"standard" : "17"
+				"standard" : "20"
 			},
 			"sourceIndexes" : 
 			[
@@ -92,7 +95,9 @@
 			"sourceIndexes" : 
 			[
 				2,
-				3
+				3,
+				4,
+				5
 			]
 		}
 	],
@@ -118,6 +123,16 @@
 		{
 			"backtrace" : 1,
 			"path" : "kalmanFilter/Matrix.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "kalmanFilter/DMatrix.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "kalmanFilter/invert.h",
 			"sourceGroupIndex" : 1
 		}
 	],

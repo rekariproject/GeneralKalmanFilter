@@ -39,7 +39,7 @@ include CMakeFiles/rules.ninja
 #############################################
 # Logical path to working directory; prefix for absolute paths.
 
-cmake_ninja_workdir = /home/felix/CLionProjects/KalmanFilter/cmake-build-debug/
+cmake_ninja_workdir = /home/felix/Dokumente/GitHub/GeneralKalmanFilter/cmake-build-debug/
 # =============================================================================
 # Object build statements for EXECUTABLE target KalmanFilter
 
@@ -49,15 +49,15 @@ cmake_ninja_workdir = /home/felix/CLionProjects/KalmanFilter/cmake-build-debug/
 
 build cmake_object_order_depends_target_KalmanFilter: phony || CMakeFiles/KalmanFilter.dir
 
-build CMakeFiles/KalmanFilter.dir/main.cpp.o: CXX_COMPILER__KalmanFilter_Debug /home/felix/CLionProjects/KalmanFilter/main.cpp || cmake_object_order_depends_target_KalmanFilter
+build CMakeFiles/KalmanFilter.dir/main.cpp.o: CXX_COMPILER__KalmanFilter_Debug /home/felix/Dokumente/GitHub/GeneralKalmanFilter/main.cpp || cmake_object_order_depends_target_KalmanFilter
   DEP_FILE = CMakeFiles/KalmanFilter.dir/main.cpp.o.d
-  FLAGS = -g
+  FLAGS = -g -std=gnu++20
   OBJECT_DIR = CMakeFiles/KalmanFilter.dir
   OBJECT_FILE_DIR = CMakeFiles/KalmanFilter.dir
 
-build CMakeFiles/KalmanFilter.dir/kalmanFilter/kalmanFilter.cpp.o: CXX_COMPILER__KalmanFilter_Debug /home/felix/CLionProjects/KalmanFilter/kalmanFilter/kalmanFilter.cpp || cmake_object_order_depends_target_KalmanFilter
+build CMakeFiles/KalmanFilter.dir/kalmanFilter/kalmanFilter.cpp.o: CXX_COMPILER__KalmanFilter_Debug /home/felix/Dokumente/GitHub/GeneralKalmanFilter/kalmanFilter/kalmanFilter.cpp || cmake_object_order_depends_target_KalmanFilter
   DEP_FILE = CMakeFiles/KalmanFilter.dir/kalmanFilter/kalmanFilter.cpp.o.d
-  FLAGS = -g
+  FLAGS = -g -std=gnu++20
   OBJECT_DIR = CMakeFiles/KalmanFilter.dir
   OBJECT_FILE_DIR = CMakeFiles/KalmanFilter.dir/kalmanFilter
 
@@ -82,7 +82,7 @@ build KalmanFilter: CXX_EXECUTABLE_LINKER__KalmanFilter_Debug CMakeFiles/KalmanF
 # Utility command for edit_cache
 
 build CMakeFiles/edit_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /home/felix/CLionProjects/KalmanFilter/cmake-build-debug && /home/felix/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5080.224/bin/cmake/linux/bin/ccmake -S/home/felix/CLionProjects/KalmanFilter -B/home/felix/CLionProjects/KalmanFilter/cmake-build-debug
+  COMMAND = cd /home/felix/Dokumente/GitHub/GeneralKalmanFilter/cmake-build-debug && /home/felix/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5080.224/bin/cmake/linux/bin/ccmake -S/home/felix/Dokumente/GitHub/GeneralKalmanFilter -B/home/felix/Dokumente/GitHub/GeneralKalmanFilter/cmake-build-debug
   DESC = Running CMake cache editor...
   pool = console
   restat = 1
@@ -94,7 +94,7 @@ build edit_cache: phony CMakeFiles/edit_cache.util
 # Utility command for rebuild_cache
 
 build CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /home/felix/CLionProjects/KalmanFilter/cmake-build-debug && /home/felix/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5080.224/bin/cmake/linux/bin/cmake --regenerate-during-build -S/home/felix/CLionProjects/KalmanFilter -B/home/felix/CLionProjects/KalmanFilter/cmake-build-debug
+  COMMAND = cd /home/felix/Dokumente/GitHub/GeneralKalmanFilter/cmake-build-debug && /home/felix/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5080.224/bin/cmake/linux/bin/cmake --regenerate-during-build -S/home/felix/Dokumente/GitHub/GeneralKalmanFilter -B/home/felix/Dokumente/GitHub/GeneralKalmanFilter/cmake-build-debug
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -110,7 +110,7 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 # =============================================================================
 
 #############################################
-# Folder: /home/felix/CLionProjects/KalmanFilter/cmake-build-debug
+# Folder: /home/felix/Dokumente/GitHub/GeneralKalmanFilter/cmake-build-debug
 
 build all: phony KalmanFilter
 

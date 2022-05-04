@@ -42,7 +42,7 @@ rule CUSTOM_COMMAND
 # Rule for re-running cmake.
 
 rule RERUN_CMAKE
-  command = /home/felix/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5080.224/bin/cmake/linux/bin/cmake --regenerate-during-build -S/home/felix/CLionProjects/KalmanFilter -B/home/felix/CLionProjects/KalmanFilter/cmake-build-debug
+  command = /home/felix/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/221.5080.224/bin/cmake/linux/bin/cmake --regenerate-during-build -S/home/felix/Dokumente/GitHub/GeneralKalmanFilter -B/home/felix/Dokumente/GitHub/GeneralKalmanFilter/cmake-build-debug
   description = Re-running CMake...
   generator = 1
 
