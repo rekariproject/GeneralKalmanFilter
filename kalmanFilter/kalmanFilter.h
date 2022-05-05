@@ -16,8 +16,7 @@ public:
     void update(DMatrix<float> measurement);
 
     DMatrix<float> F_StateTransitionMatrix = DMatrix<float>(6, 6);
-    DMatrix<float> P_EstimateUncertaintyMatrix_currentState = DMatrix<float>(6, 6);
-    DMatrix<float> P_EstimateUncertaintyMatrix_nextState = DMatrix<float>(6, 6);
+    DMatrix<float> P_EstimateUncertaintyMatrix[2] = {DMatrix<float>(6, 6), DMatrix<float>(6, 6)};
     DMatrix<float> ProcessNoiseMatrix = DMatrix<float>(6, 6);
     DMatrix<float> KalmanGainMatrix = DMatrix<float>(6, 2);
     DMatrix<float> observationMatrix = DMatrix<float>(2, 6);
