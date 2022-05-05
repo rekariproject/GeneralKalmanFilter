@@ -26,32 +26,32 @@ void kalmanFilter::initial() {
                                                                       0, 0, 0, 0, 500, 0,
                                                                       0, 0, 0, 0, 0, 500});
 
-    ProcessNoiseMatrix.set<6,6>(new float[6][6]{(float)pow((double)*deltaT,4.0)/4,(float)pow((double)*deltaT,3.0)/2,(float)pow((double)*deltaT,2.0)/2,0,0,0,
-                                                (float)pow((double)*deltaT,3.0)/2,*deltaT**deltaT,*deltaT,0,0,0,
-                                                (float)pow((double)*deltaT,2.0)/2,*deltaT,1,0,0,0,
-                                                0,0,0,(float)pow((double)*deltaT,4.0)/4,(float)pow((double)*deltaT,3.0)/2,(float)pow((double)*deltaT,2.0)/2,
-                                                0,0,0,(float)pow((double)*deltaT,3.0)/2,*deltaT**deltaT,*deltaT,
-                                                0,0,0,(float)pow((double)*deltaT,2.0)/2,*deltaT,1});
+    Q_ProcessNoiseMatrix.set<6,6>(new float[6][6]{(float)pow((double)*deltaT, 4.0) / 4, (float)pow((double)*deltaT, 3.0) / 2, (float)pow((double)*deltaT, 2.0) / 2, 0, 0, 0,
+                                                (float)pow((double)*deltaT,3.0)/2,*deltaT**deltaT, *deltaT, 0, 0, 0,
+                                                (float)pow((double)*deltaT,2.0)/2, *deltaT, 1, 0, 0, 0,
+                                                  0, 0, 0,(float)pow((double)*deltaT,4.0)/4,(float)pow((double)*deltaT,3.0)/2,(float)pow((double)*deltaT,2.0)/2,
+                                                  0, 0, 0,(float)pow((double)*deltaT,3.0)/2,*deltaT**deltaT, *deltaT,
+                                                  0, 0, 0,(float)pow((double)*deltaT,2.0)/2, *deltaT, 1});
 
-    observationMatrix.set<2,6>(new float[2][6]{1,0,0,0,0,0,
-                                                0,0,0,1,0,0,});
+    H_observationMatrix.set<2,6>(new float[2][6]{1, 0, 0, 0, 0, 0,
+                                                 0, 0, 0, 1, 0, 0,});
 
-    MeasurementUncertainty.set<2,2>(new float[2][2]{9,0,
-                                                    0,9});
+    R_MeasurementUncertainty.set<2,2>(new float[2][2]{9, 0,
+                                                      0, 9});
 
-    CurrentState.set<6,1>(new float[6][1]{0,
-                                          0,
-                                          0,
-                                          0,
-                                          0,
-                                          0,});
+    x0_CurrentState.set<6,1>(new float[6][1]{0,
+                                             0,
+                                             0,
+                                             0,
+                                             0,
+                                             0,});
 
-    Measurement.set<2,1>(new float[2][1]{0,
-                                         0,});
+    z_Measurement.set<2,1>(new float[2][1]{0,
+                                           0,});
 
 
     //Covariance Extrapolation
-    P_EstimateUncertaintyMatrix[1]= F_StateTransitionMatrix * P_EstimateUncertaintyMatrix[0] * F_StateTransitionMatrix.transpose() + ProcessNoiseMatrix * (0.2 * 0.2);
+    P_EstimateUncertaintyMatrix[1]= F_StateTransitionMatrix * P_EstimateUncertaintyMatrix[0] * F_StateTransitionMatrix.transpose() + Q_ProcessNoiseMatrix * (0.2 * 0.2);
     P_EstimateUncertaintyMatrix[1].printMatrix();
 }
 
@@ -60,26 +60,26 @@ void kalmanFilter::update(DMatrix<float> measurement) {
 
 
     //Kalman Gain
-    KalmanGainMatrix = (P_EstimateUncertaintyMatrix[1] * observationMatrix.transpose()) * (observationMatrix * P_EstimateUncertaintyMatrix[1] * observationMatrix.transpose() + MeasurementUncertainty).inverse(2);
-    KalmanGainMatrix.printMatrix();
+    K_KalmanGainMatrix = (P_EstimateUncertaintyMatrix[1] * H_observationMatrix.transpose()) * (H_observationMatrix * P_EstimateUncertaintyMatrix[1] * H_observationMatrix.transpose() + R_MeasurementUncertainty).inverse(2);
+    K_KalmanGainMatrix.printMatrix();
 
     //Measure
-    Measurement=measurement;
+    z_Measurement=measurement;
 
     //Estimate Current State
-    CurrentState=CurrentState+KalmanGainMatrix*(Measurement-observationMatrix*CurrentState);
-    CurrentState.printMatrix();
+    x0_CurrentState= x0_CurrentState + K_KalmanGainMatrix * (z_Measurement - H_observationMatrix * x0_CurrentState);
+    x0_CurrentState.printMatrix();
 
     //Estimate Uncertainty
-    P_EstimateUncertaintyMatrix[0]= (identity<float>(6) - KalmanGainMatrix * observationMatrix) * P_EstimateUncertaintyMatrix[1] * (identity<float>(6) - KalmanGainMatrix * observationMatrix).transpose() + (KalmanGainMatrix * MeasurementUncertainty * KalmanGainMatrix.transpose());
+    P_EstimateUncertaintyMatrix[0]= (identity<float>(6) - K_KalmanGainMatrix * H_observationMatrix) * P_EstimateUncertaintyMatrix[1] * (identity<float>(6) - K_KalmanGainMatrix * H_observationMatrix).transpose() + (K_KalmanGainMatrix * R_MeasurementUncertainty * K_KalmanGainMatrix.transpose());
     P_EstimateUncertaintyMatrix[0].printMatrix();
 
     //Predict Next State
-    PredictedState= F_StateTransitionMatrix * CurrentState;
-    PredictedState.printMatrix();
+    x1_PredictedState= F_StateTransitionMatrix * x0_CurrentState;
+    x1_PredictedState.printMatrix();
 
     //Covariance Extrapolation
-    P_EstimateUncertaintyMatrix[1]= F_StateTransitionMatrix * P_EstimateUncertaintyMatrix[0] * F_StateTransitionMatrix.transpose() + ProcessNoiseMatrix * (0.2 * 0.2);
+    P_EstimateUncertaintyMatrix[1]= F_StateTransitionMatrix * P_EstimateUncertaintyMatrix[0] * F_StateTransitionMatrix.transpose() + Q_ProcessNoiseMatrix * (0.2 * 0.2);
     P_EstimateUncertaintyMatrix[1].printMatrix();
 
 }

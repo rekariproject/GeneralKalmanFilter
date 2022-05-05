@@ -17,13 +17,13 @@ public:
 
     DMatrix<float> F_StateTransitionMatrix = DMatrix<float>(6, 6);
     DMatrix<float> P_EstimateUncertaintyMatrix[2] = {DMatrix<float>(6, 6), DMatrix<float>(6, 6)};
-    DMatrix<float> ProcessNoiseMatrix = DMatrix<float>(6, 6);
-    DMatrix<float> KalmanGainMatrix = DMatrix<float>(6, 2);
-    DMatrix<float> observationMatrix = DMatrix<float>(2, 6);
-    DMatrix<float> MeasurementUncertainty = DMatrix<float>(2, 2);
-    DMatrix<float> CurrentState = DMatrix<float>(6, 1);
-    DMatrix<float> PredictedState = DMatrix<float>(6, 1);
-    DMatrix<float> Measurement = DMatrix<float>(2, 1);
+    DMatrix<float> Q_ProcessNoiseMatrix = DMatrix<float>(6, 6);
+    DMatrix<float> K_KalmanGainMatrix = DMatrix<float>(6, 2);
+    DMatrix<float> H_observationMatrix = DMatrix<float>(2, 6);
+    DMatrix<float> R_MeasurementUncertainty = DMatrix<float>(2, 2);
+    DMatrix<float> x0_CurrentState = DMatrix<float>(6, 1);
+    DMatrix<float> x1_PredictedState = DMatrix<float>(6, 1);
+    DMatrix<float> z_Measurement = DMatrix<float>(2, 1);
 
 private:
 };
