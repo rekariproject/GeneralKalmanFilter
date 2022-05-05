@@ -6,7 +6,6 @@
 #define KALMANFILTER_DMATRIX_H
 
 #include <iostream>
-#include "invert.h"
 
 template<typename T>
 class DMatrix {

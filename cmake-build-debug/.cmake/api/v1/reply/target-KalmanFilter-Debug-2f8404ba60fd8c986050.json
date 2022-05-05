@@ -96,8 +96,7 @@
 			[
 				2,
 				3,
-				4,
-				5
+				4
 			]
 		}
 	],
@@ -128,11 +127,6 @@
 		{
 			"backtrace" : 1,
 			"path" : "kalmanFilter/DMatrix.h",
-			"sourceGroupIndex" : 1
-		},
-		{
-			"backtrace" : 1,
-			"path" : "kalmanFilter/invert.h",
 			"sourceGroupIndex" : 1
 		}
 	],
